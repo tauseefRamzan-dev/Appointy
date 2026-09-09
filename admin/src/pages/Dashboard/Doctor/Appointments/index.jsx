@@ -149,7 +149,7 @@ const columns = [
   return (
     <>
       <Title level={4}>All Appointments</Title>
-      <Table columns={columns} dataSource={appointments} rowKey="_id" />
+      <Table columns={columns} dataSource={appointments} scroll={{ x: 'max-content' }} rowKey="_id" />
     </>
   );
 };

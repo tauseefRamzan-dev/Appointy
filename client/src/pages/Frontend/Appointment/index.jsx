@@ -228,7 +228,7 @@ import { useAuth } from '../../../context/AuthContext';
 const Appointment = () => {
     const { Title, Paragraph } = Typography;
     const { doctors } = useApp();
-    const {isAuth}=useAuth;
+    const {isAuth}=useAuth();
     const { verified_icon, info_icon } = assets;
     const { docID } = useParams();
     const [isProcessing, setIsProcessing] = useState(false);

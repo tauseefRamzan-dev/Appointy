@@ -57,28 +57,33 @@ const Profile = () => {
   if (!user) return null;
 
   return (
-    <main className='container'>
+    <main >
       <Card title={user.fullName} style={{ maxWidth: 600, width: '100%', margin: '20px auto' }}>
         {!isEditing ? (
           <>
             <div className='fs-4' style={{ fontWeight: 'bolder', marginBottom: 12, color: '#1890ff' }}>
               {user.name}
             </div>
-            <Descriptions column={1} bordered size="small" style={{ marginBottom: 24 }}>
-              <Descriptions.Item label="Email">{user.email}</Descriptions.Item>
-              <Descriptions.Item label="Degree">{user.degree}</Descriptions.Item>
-              <Descriptions.Item label="Speciality">{user.speciality}</Descriptions.Item>
-              <Descriptions.Item label="About">{user.about}</Descriptions.Item>
-              <Descriptions.Item label="Appointment Fee">{user.fees}</Descriptions.Item>
-              <Descriptions.Item label="Address">
-                    {user.address}
-              </Descriptions.Item>
-              <Descriptions.Item label="Availability">
-  <Tag color={user.available ? 'green' : 'red'}>
-    {user.available ? '✔ Available' : '❌ Not Available'}
-  </Tag>
-</Descriptions.Item>
-            </Descriptions>
+            <Descriptions 
+  column={{ xs: 1, sm: 1, md: 2 }} 
+  bordered 
+  size="small" 
+  style={{ marginBottom: 24 }}
+>
+  <Descriptions.Item label="Email" span={2}>{user.email}</Descriptions.Item>
+  <Descriptions.Item label="Degree">{user.degree}</Descriptions.Item>
+  <Descriptions.Item label="Speciality">{user.speciality}</Descriptions.Item>
+  <Descriptions.Item label="Appointment Fee">{user.fees}</Descriptions.Item>
+  <Descriptions.Item label="Availability">
+    <Tag color={user.available ? 'green' : 'red'}>
+      {user.available ? '✔ Available' : '❌ Not Available'}
+    </Tag>
+  </Descriptions.Item>
+  <Descriptions.Item label="About" span={2}>{user.about}</Descriptions.Item>
+  <Descriptions.Item label="Address" span={2}>
+    {user.address}
+  </Descriptions.Item>
+</Descriptions>
             <Button type="primary" shape="round" onClick={handleEditClick}>
               Edit
             </Button>
