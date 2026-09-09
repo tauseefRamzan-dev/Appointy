@@ -57,7 +57,11 @@ const Navbar = () => {
               <Space>
                 {
                  (location.pathname=="/")? 
-                 <button className='btn btn-sm btn-primary rounded-4 fw-bold'>Admin Panel</button>
+                 <button
+                onClick={() => {
+      window.open("https://appoint-admin-panel.vercel.app/", "_blank");
+    }}
+                 className='btn btn-sm btn-primary rounded-4 fw-bold'>Admin Panel</button>
                  :""
                 }
                 {
