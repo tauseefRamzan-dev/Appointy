@@ -35,7 +35,9 @@ const DoctorDashboard = () => {
     },
     {
       key: "user-panel",
-      label: <button className="btn btn-primary btn-sm py-1 px-3 rounded-pill text-xs">User Panel</button>,
+      label: <button onClick={()=>{
+        window.open("https://appointy-client.vercel.app/", "_blank");
+      }} className="btn btn-primary btn-sm py-1 px-3 rounded-pill text-xs">User Panel</button>,
     },
     {
       key: "logout",
