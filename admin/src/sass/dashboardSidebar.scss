@@ -1,0 +1,31 @@
+.sidebar-menu {
+  .ant-menu-item-selected {
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 4px;
+      background-color: blue;
+    }
+  }
+}
+
+/* dashboardSidebar.scss */
+.sidebar-menu {
+  .ant-menu-item {
+    height: 55px !important;       /* Items ki height barhane ke liye */
+    line-height: 55px !important;  /* Text vertically center karne ke liye */
+    font-size: 16px !important;    /* Text / Font size barhane ke liye */
+    margin-bottom: 8px !important; /* Items ke darmiyan gap ke liye */
+
+    // Agar icons ka size bhi barhana ho
+    .sidebar-icon {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}
