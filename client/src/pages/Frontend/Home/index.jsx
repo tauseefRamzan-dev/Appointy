@@ -8,10 +8,12 @@ import TopDoctors from '../../../components/TopDoctors'
 import SpecialityMenu from '../../../components/SpecialityMenu'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useAuth } from '../../../context/AuthContext'
 
 const Home = () => {
   const {Title,Paragraph}=Typography
   const {appointment_img}=assets
+  const {isAuth}=useAuth()
 
   const navigate=useNavigate();
   return (
@@ -51,9 +53,14 @@ const Home = () => {
                   >
                   Book Appointment <br />With 100+ Trusted <br /> Doctors
                 </Title>
-                <button onClick={()=>{
+                {
+                  (!isAuth)?
+<button onClick={()=>{
                   navigate("/auth/register")
                 }} className="btn btn-light">Create Account</button>
+                :""
+                  
+                }
                 </motion.div>
               </Col>
       

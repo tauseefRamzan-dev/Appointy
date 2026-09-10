@@ -118,7 +118,7 @@ const {Title,Paragraph,Text}=Typography;
           
             <div key={index} className='d-flex justify-content-between align-items-center mb-3 border-bottom pb-2 w-100 flex-wrap gap-2'>
                 <div className='d-flex'>
-                  <Avatar size={50} style={{objectFit: "contain"}}  src={item.userData?.photo.url || upload_area}  icon={<UserOutlined />} />
+                  <Avatar size={50} style={{objectFit: "contain", marginRight: "8px"}}  src={item.userData?.photo.url || upload_area}  icon={<UserOutlined />} />
                    <div className='d-flex flex-column'>
                     <Title className='mb-0' level={5}>{item.userData.fullName}</Title>
                     <Text>{`Booking on ${dayjs(item.slotDate).format("D MMM YYYY")}`}</Text>
