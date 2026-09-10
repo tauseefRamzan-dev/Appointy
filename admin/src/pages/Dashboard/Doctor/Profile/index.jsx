@@ -64,11 +64,14 @@ const Profile = () => {
             <div className='fs-4' style={{ fontWeight: 'bolder', marginBottom: 12, color: '#1890ff' }}>
               {user.name}
             </div>
+            <div className='table-responsive w-100'>
+
             <Descriptions 
-  column={{ xs: 1, sm: 1, md: 2 }} 
+  column={{ xs: 1, sm: 1, md: 2 }}
   bordered 
   size="small" 
-  style={{ marginBottom: 24 }}
+  // style={{ marginBottom: 24 }}
+  style={{ marginBottom: 24, minWidth: '500px' }}
 >
   <Descriptions.Item label="Email" span={2}>{user.email}</Descriptions.Item>
   <Descriptions.Item label="Degree">{user.degree}</Descriptions.Item>
@@ -84,7 +87,8 @@ const Profile = () => {
     {user.address}
   </Descriptions.Item>
 </Descriptions>
-            <Button type="primary" shape="round" onClick={handleEditClick}>
+  </div>
+            <Button className='mt-2' type="primary" shape="round" onClick={handleEditClick}>
               Edit
             </Button>
           </>
