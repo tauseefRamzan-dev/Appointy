@@ -1,6 +1,7 @@
 const express=require("express");
 const { verifyUser } = require("../middleware/auth");
 const doctorModel = require("../models/doctorModel");
+const appointmentModel = require("../models/appointmentModel");
 const multer = require("multer");
 const router=express.Router();
 const upload=multer()
@@ -79,6 +80,39 @@ res.status(200).json({message: "Doctor availbility Sucessfully updated",IsError:
   console.log(error)
     res.status(500).json({message: "Internal Server Error", isError: true})
 }
+})
+
+router.get("/dashboard",verifyUser,async (req, res) => {
+  try {
+    if(req.user.role==="doctor")
+    {
+
+      const docId = req.user.id;
+      const appointments = await appointmentModel.find({ docId });
+      
+      let earnings = 0;
+    const patientSet = new Set();
+
+    appointments.forEach((a) => {
+      if (a.isCompleted || a.payment) earnings += a.amount;
+      patientSet.add(a.userId.toString());
+    });
+
+    const dashData = {
+      earnings,
+      appointments: appointments.length,
+      patients: patientSet.size,
+      latestAppointments: appointments.reverse().slice(0, 5),
+    };
+    
+    res.json({ dashData,isError: false });
+  }else{
+    res.status(401).json({message: "Unauthorized access", isError: true})
+  }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error", isError:true });
+  }
 })
 
 module.exports=router

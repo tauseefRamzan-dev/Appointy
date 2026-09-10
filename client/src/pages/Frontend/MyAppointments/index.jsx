@@ -123,8 +123,8 @@ const cancelAppointment=async(_id)=>{
                       </>
                       :
 (item.isCompleted)?
-<Tag color="red" style={{ padding: '6px 14px', fontSize: '14px', borderRadius: '6px' }}>
-  Cancelled
+<Tag color="green" style={{ padding: '6px 14px', fontSize: '14px', borderRadius: '6px' }}>
+  Completed
 </Tag>
 :
 <Tag color="red" style={{ padding: '6px 14px', fontSize: '14px', borderRadius: '6px' }}>
