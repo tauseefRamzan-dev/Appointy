@@ -4,21 +4,37 @@ import { createContext, useContext, useEffect, useReducer, useState } from 'reac
 
 const AuthContext=createContext();
 const initialState={isAuth: false, user:{}}
-const reducer = (state,action) => {
-    const {type,payload}=action;
-    const {user}=payload;
-switch (type) {
-    case "SET_LOGIN":
-        return {isAuth:true,user}
-        break;
-    case "SET_LOGOUT":
-        return {isAuth:false,user:{}}
-        break;
-    default:
-        return state;
-}
+// const reducer = (state,action) => {
+//     const {type,payload}=action;
+//     const {user}=payload;
+// switch (type) {
+//     case "SET_LOGIN":
+//         return {isAuth:true,user}
+//         break;
+//     case "SET_LOGOUT":
+//         return {isAuth:false,user:{}}
+//         break;
+//     default:
+//         return state;
+// }
 
   
+// }
+
+
+const reducer = (state, action) => {
+    const { type, payload } = action;
+    
+    switch (type) {
+        case "SET_LOGIN":
+            return { isAuth: true, user: payload?.user };
+            
+        case "SET_LOGOUT":
+            return { isAuth: false, user: {} };
+            
+        default:
+            return state;
+    }
 }
 const Auth =({children}) =>{
    const [state,dispatch]=useReducer(reducer,initialState);
