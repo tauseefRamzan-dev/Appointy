@@ -3,8 +3,8 @@ import Navbar from './Navbar'
 
 const Header = () => {
   return (
-    <header>
-    <Navbar/>
+    <header className="sticky-top bg-white shadow-sm">
+      <Navbar />
     </header>
   )
 }
