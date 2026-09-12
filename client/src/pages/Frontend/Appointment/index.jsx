@@ -213,7 +213,7 @@
 // export default Appointment;
 
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { assets } from '../../../assets/assets';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
@@ -232,6 +232,7 @@ const Appointment = () => {
     const { verified_icon, info_icon } = assets;
     const { docID } = useParams();
     const [isProcessing, setIsProcessing] = useState(false);
+const navigate=useNavigate();
 
     const [slotIndex, setSlotIndex] = useState(0);
     const [slotTime, setSlotTime] = useState('');
@@ -312,6 +313,7 @@ const Appointment = () => {
             } else {
                 toast.success(data.message);
                 setSlotTime('');
+                navigate("/my-appointments");
             }
         } catch (error) {
             console.log("Error while booking appointment", error);
