@@ -71,7 +71,7 @@ const {Title,Paragraph,Text}=Typography;
         <img src={appointments_icon} alt="Appointments" style={{ width: '45px', marginRight: '15px' }} />
         <div>
           <Title level={5} style={{ margin: 0, fontSize: "20px" }}>{dashData?.appointments || 0}</Title>
-          <Text type="secondary" style={{ fontSize: '16px' }}>Appointments</Text>
+          <Text type="secondary" style={{ fontSize: '16px', textWrap: "nowrap" }}>Appointments</Text>
         </div>
       </div>
     </motion.div>
