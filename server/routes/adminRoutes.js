@@ -2,6 +2,9 @@ require('dotenv').config();
 const express = require("express");
 const router = express.Router();
 const doctorModel = require("../models/doctorModel");
+const UsersModel=require("../models/auth");
+const appointmentModel=require("../models/appointmentModel")
+const doctors=require("../models/doctorModel")
 const bcrypt = require("bcrypt");
 const cloudinary = require("cloudinary").v2;
 const multer = require("multer");
@@ -80,4 +83,30 @@ router.post("/add-doctor",verifyUser,upload.single("avatar"), async (req, res) =
     }
     }
 });
+
+router.get("/dashboard",verifyUser,async(req,res)=>{
+        try{
+            if(req.user.role==="admin")
+            {
+                const doctors=await doctorModel.countDocuments({});
+                const appointments=await appointmentModel.find({});
+                const patients=await UsersModel.countDocuments({});
+
+
+                const dashData = {
+      doctors,
+      appointments: appointments.length,
+      patients,
+      latestAppointments: appointments.reverse().slice(0, 5),
+    };
+
+    res.json({ dashData,isError: false });
+            }else{
+               res.status(401).json({message: "Unauthorized Access", isError: true})
+            }
+        }catch(error){
+             console.log(error);
+             res.status(500).json({message: "Internal Server Error",isError: true})
+        }
+})
 module.exports=router;
