@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import { Skeleton,Row,Col,Card, Typography } from 'antd'
 import { Link, useNavigate } from 'react-router-dom'
-// import { doctors } from '../assets/assets'
 import { motion } from 'framer-motion'
 import {useApp} from '../context/AppContext'
 const TopDoctors = () => {
-    const [isLoading,setIsLoading]=useState(false);
     const {Title,Paragraph}=Typography
-    const {doctors}=useApp();
+    const {doctors,isLoading}=useApp();
     const navigate=useNavigate()
   return (
     <>
@@ -27,14 +25,24 @@ const TopDoctors = () => {
   <Row gutter={[16, 24]}>
     {isLoading
               ? 
-                Array.from({ length: 10 }).map((_, index) => (
-                    <Col key={index} lg={6} md={12} sm={12} xs={12}>
-                    <Card className='border-0 shadow-sm' bodyStyle={{ padding: '12px' }}>
-                      <Skeleton.Node active style={{ width: '100%', height: '220px' }} className='mb-3' />
-                      <Skeleton active paragraph={{ rows: 2 }} title={false} />
-                    </Card>
-                  </Col>
-                ))
+                     Array.from({ length: 10 }).map((_, index) => (
+                            <Col key={index} lg={6} md={12} sm={12} xs={12}>
+                                <Card className='border-0 shadow-sm' bodyStyle={{ padding: '12px' }}>
+                                    <Skeleton.Node active style={{ width: '100%', height: '220px' }} className='mb-3 rounded w-100' />
+                                    
+                                    <div className='d-flex align-items-center gap-2 mb-2'>
+                                        <Skeleton.Avatar active size="small" shape="circle" style={{ width: '8px', height: '8px', minWidth: '8px' }} />
+                                        <Skeleton.Input active size="small" style={{ width: '70px', height: '14px', minWidth: '70px' }} />
+                                    </div>
+
+                                    <Skeleton 
+                                        active 
+                                        paragraph={{ rows: 1, width: ['60%'] }} 
+                                        title={{ width: '80%' }} 
+                                    />
+                                </Card>
+                            </Col>
+                        ))
                 :
                 doctors.slice(0,10).map((item, index) => (
                     <Col key={index} lg={6} md={12} sm={12} xs={12}>
