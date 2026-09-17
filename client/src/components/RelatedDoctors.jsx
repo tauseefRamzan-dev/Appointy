@@ -1,6 +1,5 @@
 import React from 'react'
 import { Row,Col,Card, Typography } from 'antd'
-// import { doctors } from '../assets/assets'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import {useApp} from '../context/AppContext'
