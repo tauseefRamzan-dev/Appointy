@@ -6,12 +6,17 @@ import { assets } from '../../../assets/assets'
 import '../../../sass/about.scss'
 const { Title, Paragraph } = Typography
 import { motion } from 'framer-motion'
+import { Helmet} from 'react-helmet-async';
 
 const Contact = () => {
   const { contact_image } = assets
 
   return (
     <>
+    <Helmet>
+    <title>Contact Us | Appointy</title>
+        <meta name="description" content="Contact to Appointy, your trusted healthcare partner." />
+      </Helmet>
       <Header />
       <main className='container my-4'>
         <div id="contact-us">

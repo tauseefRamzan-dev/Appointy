@@ -3,10 +3,10 @@ import Header from '../../../components/Header'
 import Footer from '../../../components/Footer'
 import { Col, Row, Card, Typography, Button, Drawer } from 'antd'
 import { FilterOutlined } from '@ant-design/icons'
-// import { doctors } from '../../../assets/assets'
 import { motion } from 'framer-motion'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useApp } from '../../../context/AppContext'
+import { Helmet} from 'react-helmet-async';
 
 const Doctors = () => {
   const { Title, Paragraph,Text } = Typography;
@@ -74,6 +74,10 @@ const categories=["General physician","Gynecologist","Dermatologist","Pediatrici
 
   return (
     <>
+     <Helmet>
+        <title>Doctors | Appointy</title>
+            <meta name="description" content="Appointy Doctors, your trusted healthcare partner." />
+          </Helmet>
       <Header />
         <Title level={5}  className='container'>Browse through the doctors specialist.
 </Title>
